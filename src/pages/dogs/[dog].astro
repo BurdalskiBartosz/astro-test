@@ -1,21 +1,18 @@
 ---
-import { actions } from "astro:actions";
-export const prerender = true;
+export const prerender = true
 
 export async function getStaticPaths() {
-  const te = await actions.getGreeting({ name: "123" });
-  console.log(te);
-  const test = await fetch("https://pokeapi.co/api/v2/pokemon?limit=30");
-  const x = await test.json();
+	const test = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30')
+	const x = await test.json()
 
-  return [
-    { params: { dog: "clifford" } },
-    { params: { dog: "rover" } },
-    { params: { dog: "spot" } },
-  ];
+	return [
+		{ params: { dog: 'clifford' } },
+		{ params: { dog: 'rover' } },
+		{ params: { dog: 'spot' } }
+	]
 }
 
-const { dog } = Astro.params;
+const { dog } = Astro.params
 ---
 
 <div>Good dog, {dog}!</div>

@@ -1,11 +1,14 @@
-import { defineAction } from 'astro:actions';
+import { defineAction } from 'astro:actions'
+import { PokemonClient } from 'pokenode-ts'
+
+const api = new PokemonClient()
 
 export const pokemon = {
-  getPokemons: defineAction({
-    handler: async () => {
-        const data = await fetch("https://pokeapi.co/api/v2/pokemon?limit=30");
-        const pokemons = await data.json()
-        return pokemons
-    }
-  }),
+	getPokemonsList: defineAction({
+		handler: async () => {
+			const data = await api.listPokemons(0, 50)
+
+			return data
+		}
+	})
 }
