@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import { actions } from 'astro:actions'
 
-const { data, error } = await actions.getPokemonsList()
+const { data, error } = await actions.getPokemonsList({})
 ---
 
 <Layout title="Welcome to Astro.">
@@ -12,13 +12,11 @@ const { data, error } = await actions.getPokemonsList()
 		</h1>
 		<div class="flex flex-col gap-y-2">
 			{
-				data?.results.map((item) => {
+				data?.map((item) => {
 					return (
 						<div class="rounded-2xl border-2 p-2 text-white">
-							<p>{item.name}</p>
-							<a href={item.url} target="_blank">
-								{item.url}
-							</a>
+							<p class="capitalize">{item.name}</p>
+							<img src={item.sprites.front_default} />
 						</div>
 					)
 				})
