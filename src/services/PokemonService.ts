@@ -19,6 +19,12 @@ class PokemonService {
 
 		return pokemonData
 	}
+
+	public async getPokemon(name: string) {
+		const data = await this.api.getPokemonByName(name)
+
+		return data
+	}
 }
 
 const pokemonService = new PokemonService()

@@ -6,7 +6,7 @@ const { data, error } = await actions.getPokemonsList({})
 ---
 
 <Layout title="Welcome to Astro.">
-	<main class="p-5">
+	<main>
 		<h1 class="mb-5 text-4xl text-gray-400">
 			Pokemon <span class="text-green-300">Astro test</span>
 		</h1>
@@ -14,10 +14,10 @@ const { data, error } = await actions.getPokemonsList({})
 			{
 				data?.map((item) => {
 					return (
-						<div class="rounded-2xl border-2 p-2 text-white">
+						<a href={`/pokemon/${item.name}`} class="rounded-2xl border-2 p-2 text-white">
 							<p class="capitalize">{item.name}</p>
 							<img src={item.sprites.front_default} />
-						</div>
+						</a>
 					)
 				})
 			}

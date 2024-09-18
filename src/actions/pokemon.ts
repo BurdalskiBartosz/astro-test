@@ -15,5 +15,15 @@ export const pokemon = {
 
 			return data
 		}
+	}),
+	getPokemon: defineAction({
+		input: z.object({
+			name: z.string()
+		}),
+		handler: async ({ name }) => {
+			const data = await pokemonService.getPokemon(name)
+
+			return data
+		}
 	})
 }

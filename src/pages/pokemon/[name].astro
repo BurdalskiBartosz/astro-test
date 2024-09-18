@@ -1,0 +1,25 @@
+---
+import { actions } from 'astro:actions'
+import Layout from '../../layouts/Layout.astro'
+
+type Params = { name: string }
+
+const { name } = Astro.params as Params
+
+const { data } = await actions.getPokemon({ name })
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<a
+			href="/"
+			class="rounded border-2 border-white bg-gray-400 p-2 duration-150 ease-linear hover:bg-white"
+			>Go Back</a
+		>
+
+		<section class="py-5">
+			<h1 class="text-5xl capitalize text-white">{name}</h1>
+			<img src={data?.sprites.front_default} />
+		</section>
+	</main>
+</Layout>
